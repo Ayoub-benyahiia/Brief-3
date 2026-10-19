@@ -7,7 +7,7 @@ L'interface est prête, ses fonctionnalités dynamiques sont à développer dans
 1. Ouvrez ce dossier dans Visual Studio Code.
 2. Ouvrez `index.html` dans un navigateur (ou Live Server).
 3. Ouvrez la console (`F12`).
-4. Travaillez dans `js/app.js`, une étape à la fois.
+4. Travaillez dans `js/app.js`, une étape à la fois..
 
 ## Fichiers
 ```
