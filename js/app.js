@@ -14,6 +14,9 @@
 //  - Comment accéder au prix du 2e cours ? Au 1er créneau du 3e cours ?
 // TODO : affichez `cours` dans la console avec console.log(), puis explorez-le.
 
+// console.log(cours);
+// console.log(cours[0]);
+
 
 // ------------------------------------------------------------
 // ÉTAPE 1 : Sélectionner les éléments du DOM
@@ -24,7 +27,27 @@
 //  summary-count, summary-total, confirm-button, message
 // TODO : récupérez ces éléments et rangez-les dans des constantes.
 // Question : quelle est la différence entre getElementById et querySelector ?
-
+// const coursesContainer = document.getElementById("courses-container")
+// const selectedCourseTitle = document.getElementById("selected-course-title");
+const coursesContainer = document.getElementById("courses-container");
+// console.log(coursesContainer);
+const selectedCourseTitle = document.getElementById("selected-course-title");
+// console.log(selectedCourseTitle);
+const slotsContainer = document.getElementById("slots-container");
+// console.log(slotsContainer)
+const seatsContainer = document.getElementById("seats-container");
+// console.log(seatsContainer)
+const summaryCourse = document.getElementById("summary-course");
+// console.log(summaryCourse)
+const summarySlot = document.getElementById("summary-slot");
+// console.log(summarySlot)
+const summarySeats = document.getElementById("summary-seats");
+// console.log(summarySeats)
+const summaryCount = document.getElementById("summary-count");
+// console.log(summaryCount)
+const summaryTotal = document.getElementById("summary-total");
+const confirmButton = document.getElementById("confirm-button");
+const message = document.getElementById("message");
 
 // ------------------------------------------------------------
 // ÉTAPE 2 : État de l'application
@@ -35,6 +58,9 @@
 //  (cours choisi, créneau choisi, emplacements choisis...)
 // Indice : pourquoi un tableau est-il adapté pour les emplacements choisis ?
 
+let coursChoisi;
+let creneauChoisi;
+let emplacementsChoisis = [];
 
 // ------------------------------------------------------------
 // ÉTAPE 3 : Afficher les cours (US01)
@@ -47,7 +73,19 @@
 //  - Quelle boucle ou méthode de tableau allez-vous utiliser ?
 //  - Comment stocker l'id du cours sur la carte (indice : data-*) ?
 //  - Les template literals (`...${valeur}...`) peuvent-ils vous aider ?
+let cards;
+cours.forEach(cour => {
+    coursesContainer.innerHTML += `<article class="cursor-pointer overflow-hidden ring-teal-600 rounded-2xl bg-white shadow-sm transition hover:shadow-md" data-id=${cour.id}>
+            <img src=${cour.image} alt="Visuel du cours Yoga Flow" class="h-36 w-full object-cover" />
+            <div class="space-y-1 p-4">
+              <span class="inline-block rounded-full bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700">${cour.categorie}</span>
+              <h3 class="text-lg font-semibold text-slate-900">${cour.nom}</h3>
+              <p class="text-sm text-slate-600">${cour.duree}, avec Camille Roux</p>
+              <p class="pt-1 text-base font-bold text-slate-900">${cour.prix} € <span class="text-sm font-normal text-slate-500">par place</span></p>
+            </div>
+            </article>`;
 
+});
 
 // ------------------------------------------------------------
 // ÉTAPE 4 : Sélectionner un cours (US02)
@@ -137,3 +175,6 @@
 // ------------------------------------------------------------
 // Comment partager la liste des réservations confirmées entre deux pages
 // sans rien enregistrer durablement ? Réfléchissez aux options et à leurs limites.
+
+
+
