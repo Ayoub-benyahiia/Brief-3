@@ -86,7 +86,6 @@ cours.forEach(cour => {
             </article>`;
 
 });
-
 // ------------------------------------------------------------
 // ÉTAPE 4 : Sélectionner un cours (US02)
 // ------------------------------------------------------------
@@ -98,6 +97,43 @@ cours.forEach(cour => {
 //  - Faut-il un écouteur par carte, ou un seul sur le conteneur ? Quels sont les avantages ?
 //  - Comment retrouver le cours à partir de l'id lu dans la carte ?
 //  - Que faut-il réinitialiser quand on change de cours ?
+
+
+const container_of_courses = document.querySelectorAll('#courses-container article');
+
+container_of_courses.forEach(function (item) {
+    item.addEventListener('click', function () {
+
+        container_of_courses.forEach(function (c) {
+            c.classList.remove('ring-2', 'ring-teal-600');
+        });
+
+        item.classList.add('ring-2', 'ring-teal-600');
+        // console.log(item);
+
+        coursId = item.dataset.id;
+
+        creneauxBttn(coursId)
+
+
+
+        // const container_of_crenau
+
+    });
+});
+const creneauxBttn = (coursId) => {
+
+    const foundCourse = cours.find(item => item.id == coursId)
+    selectedCourseTitle.textContent = foundCourse.nom;
+    let btncreneaux = "";
+    foundCourse.creneaux.forEach(c => {
+
+        btncreneaux += `<button type="button" class="rounded-xl border px-4 py-2 text-sm font-medium transition border-slate-300 bg-white text-slate-800 hover:border-teal-600" data-id="vendredi-19:00">
+            ${c.jour} <span class="font-normal">${c.heure}</span>
+          </button>`
+        slotsContainer.innerHTML = btncreneaux
+    })
+}
 
 
 // ------------------------------------------------------------
